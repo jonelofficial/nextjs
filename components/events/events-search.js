@@ -40,8 +40,8 @@ const EventsSearch = ({ onSearch }) => {
             <option value="12">December</option>
           </select>
         </div>
-        <Button>Find Events</Button>
       </div>
+      <Button>Find Events</Button>
     </form>
   );
 };
