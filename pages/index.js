@@ -1,25 +1,10 @@
-import Link from "next/link";
-
-const Homepage = () => {
+const HomePage = () => {
+  const featuredEvents = getFeaturedEvents();
   return (
     <div>
-      <h1>Home Page</h1>
-      <ul>
-        <li>
-          <Link href="/portfolio">Portfolio</Link>
-        </li>
-        <li>
-          <Link href="/blog/test">Blog</Link>
-        </li>
-        <li>
-          <Link href="/clients">Clients</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-      </ul>
+      <EventList items={featuredEvents} />
     </div>
   );
 };
 
-export default Homepage;
+export default HomePage;
