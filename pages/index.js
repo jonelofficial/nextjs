@@ -1,4 +1,3 @@
-import EventList from "@/components/events/event-list";
 
 const HomePage = ({ items }) => {
   return (
@@ -29,3 +28,4 @@ export const getStaticProps = async () => {
 };
 
 export default HomePage;
+
