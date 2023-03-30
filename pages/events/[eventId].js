@@ -28,7 +28,7 @@ const EventDetailPage = ({ event }) => {
   );
 };
 
-export const getServerSideProps = async ({ params }) => {
+export const getStaticProps = async ({ params }) => {
   const res = await fetch(
     "https://nextjs-c0dc1-default-rtdb.firebaseio.com/events.json"
   );
@@ -41,7 +41,27 @@ export const getServerSideProps = async ({ params }) => {
     return { props: { event: null } };
   }
 
-  return { props: { event: data } };
+  return { props: { event: data }, revalidate: 30 };
+};
+
+export const getStaticPaths = async () => {
+  const res = await fetch(
+    "https://nextjs-c0dc1-default-rtdb.firebaseio.com/events.json"
+  );
+
+  const jsonData = await res.json();
+
+  const transformedData = Object.keys(jsonData).map((key) => ({
+    id: key,
+    ...jsonData[key],
+  }));
+
+  const ids = transformedData.map((data) => ({ params: { eventId: data.id } }));
+
+  return {
+    paths: ids,
+    fallback: false, // false because all id is updated from server , "blocking" if you want to wait the data before rendering
+  };
 };
 
 export default EventDetailPage;

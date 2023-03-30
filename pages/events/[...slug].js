@@ -2,27 +2,37 @@ import EventList from "@/components/events/event-list";
 import ResultsTitle from "@/components/events/results-title";
 import Button from "@/components/ui/button";
 import ErrorAlert from "@/components/ui/error-alert";
-import { Fragment } from "react";
-
+import { useRouter } from "next/router";
+import { Fragment, useEffect, useState } from "react";
+import useSWR from "swr";
 const FilteredEventsPage = ({
-  filteredData,
   numMonth,
   numYear,
-  filteredEvents,
+  filteredEvents: initialData,
+  isError,
 }) => {
-  if (!filteredData) {
+  const [filteredEvents, setFilteredEvents] = useState(initialData);
+  const router = useRouter();
+
+  const filteredData = router.query.slug;
+
+  const { data, error } = useSWR(
+    "https://nextjs-c0dc1-default-rtdb.firebaseio.com/events.json"
+  );
+
+  useEffect(() => {
+    console.log("ERROR: ", error);
+    console.log("DATA: ", data);
+    return () => {
+      null;
+    };
+  }, [data]);
+
+  if (!filteredData && !data) {
     return <p className="center">Loading...</p>;
   }
 
-  if (
-    filteredData.length > 2 ||
-    isNaN(numYear) ||
-    isNaN(numMonth) ||
-    numYear > 2030 ||
-    numYear < 2021 ||
-    numMonth < 1 ||
-    numMonth > 12
-  ) {
+  if (isError) {
     return (
       <div style={{ padding: "2rem" }}>
         <ErrorAlert>
@@ -69,6 +79,23 @@ export const getServerSideProps = async ({ params }) => {
   const numYear = +filteredYear;
   const numMonth = +filteredMonth;
 
+  if (
+    params.slug.length > 2 ||
+    isNaN(numYear) ||
+    isNaN(numMonth) ||
+    numYear > 2030 ||
+    numYear < 2021 ||
+    numMonth < 1 ||
+    numMonth > 12
+  ) {
+    return {
+      props: { isError: true },
+      // redirect: {
+      //   destination: "/test-error",
+      // },
+    };
+  }
+
   const res = await fetch(
     "https://nextjs-c0dc1-default-rtdb.firebaseio.com/events.json"
   );
@@ -91,7 +118,6 @@ export const getServerSideProps = async ({ params }) => {
 
   return {
     props: {
-      filteredData: params.slug,
       numYear: numYear,
       numMonth: numMonth,
       filteredEvents: data,

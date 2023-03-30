@@ -24,6 +24,7 @@ export const getStaticProps = async () => {
 
   return {
     props: { items: filteredData },
+    revalidate: 1800,
   };
 };
 
