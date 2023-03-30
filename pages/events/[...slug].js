@@ -77,12 +77,7 @@ export const getServerSideProps = async ({ params }) => {
 
   const transformedData = Object.keys(jsonData).map((key) => ({
     id: key,
-    title: jsonData[key].title,
-    description: jsonData[key].description,
-    location: jsonData[key].location,
-    date: jsonData[key].date,
-    image: jsonData[key].image,
-    isFeatured: jsonData[key].isFeatured,
+    ...jsonData[key],
   }));
 
   const data = transformedData.filter((e) => {

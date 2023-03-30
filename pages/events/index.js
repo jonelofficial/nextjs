@@ -25,12 +25,7 @@ export const getStaticProps = async () => {
 
   const tranformedData = Object.keys(jsonData).map((key) => ({
     id: key,
-    title: jsonData[key].title,
-    date: jsonData[key].date,
-    description: jsonData[key].description,
-    image: jsonData[key].image,
-    isFeatured: jsonData[key].isFeatured,
-    location: jsonData[key].location,
+    ...jsonData[key],
   }));
 
   return {
