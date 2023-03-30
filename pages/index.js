@@ -10,4 +10,19 @@ const HomePage = () => {
   );
 };
 
+export const getServerSideProps = async () => {
+  const res = await fetch(
+    "https://nextjs-c0dc1-default-rtdb.firebaseio.com/events",
+    { method: "GET" }
+  );
+
+  const jsonData = await res.json();
+
+  console.log("data: ", jsonData);
+
+  return {
+    props: {},
+  };
+};
+
 export default HomePage;

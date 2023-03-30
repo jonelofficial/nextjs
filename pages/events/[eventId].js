@@ -11,7 +11,6 @@ const EventDetailPage = () => {
 
   const event = getEventById(router.query?.eventId);
 
-  console.log(event);
   if (!event) {
     return (
       <ErrorAlert>
