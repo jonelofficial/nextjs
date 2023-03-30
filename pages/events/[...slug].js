@@ -21,7 +21,6 @@ const FilteredEventsPage = ({
   );
 
   useEffect(() => {
-    console.log("ERROR: ", error);
     console.log("DATA: ", data);
     return () => {
       null;
