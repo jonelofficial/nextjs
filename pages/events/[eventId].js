@@ -2,15 +2,9 @@ import EventContent from "@/components/event-detail/event-content";
 import EventLogistics from "@/components/event-detail/event-logistics";
 import EventSummary from "@/components/event-detail/event-summary";
 import ErrorAlert from "@/components/ui/error-alert";
-import { getEventById } from "@/dummy-data";
-import { useRouter } from "next/router";
 import { Fragment } from "react";
 
-const EventDetailPage = () => {
-  const router = useRouter();
-
-  const event = getEventById(router.query?.eventId);
-
+const EventDetailPage = ({ event }) => {
   if (!event) {
     return (
       <ErrorAlert>
@@ -32,6 +26,22 @@ const EventDetailPage = () => {
       </EventContent>
     </Fragment>
   );
+};
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await fetch(
+    "https://nextjs-c0dc1-default-rtdb.firebaseio.com/events.json"
+  );
+
+  const jsonData = await res.json();
+
+  const data = jsonData[params.eventId];
+
+  if (!data) {
+    return { props: { event: null } };
+  }
+
+  return { props: { event: data } };
 };
 
 export default EventDetailPage;
