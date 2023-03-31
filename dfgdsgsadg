@@ -1,0 +1,35 @@
+[33m97fa6fd[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m merge with optimization
+[33m6248bc4[m[33m ([m[1;31morigin/optimization[m[33m, [m[1;32moptimization[m[33m)[m image optimization and injecting head for title and meta
+[33m5154247[m delete
+[33mf2e431f[m Merge branch 'detailed_pre-rendering'
+[33m83483a3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/detailed_pre-rendering[m[33m, [m[1;32mmain[m[33m, [m[1;32mdetailed_pre-rendering[m[33m)[m test
+[33m0ef5ec4[m Merge pull request #4 from jonelofficial/detailed_pre-rendering
+[33m72e23a9[m Merge branch 'master' into detailed_pre-rendering
+[33m1548886[m Create index.js
+[33md31a4dd[m done
+[33m13ced83[m remove index
+[33m8e8e647[m remove compnent
+[33ma6e0574[m test
+[33m54afe48[m adjust tranformedData
+[33m02f95ed[m used getStaticProps and getServerSideProps
+[33ma0b66b4[m add fetch
+[33m0cf62bc[m add index
+[33mce7fdaf[m remove index
+[33ma314ad3[m remove index
+[33m2fae94d[m Resolved merge conflict in pages/index.js
+[33me456861[m[33m ([m[1;31morigin/detailed_filed_based_routing[m[33m)[m delete test
+[33m55084c2[m test
+[33m3c393b7[m Merge branch 'detailed_pre-rendering'
+[33m9a9cf26[m start course
+[33m2443ff6[m Merge branch 'master' of https://github.com/jonelofficial/nextjs
+[33m0e47738[m initial commit for detailed pre-redering
+[33m9fc7481[m[33m ([m[1;31morigin/pre-rendering[m[33m)[m pre rendered ssr csr static
+[33mc11bf2a[m Merge pull request #1 from jonelofficial/pre-rendering
+[33me229593[m initial commit for pre-rendering
+[33mf5ab00c[m adjust button
+[33m090383a[m more on routing
+[33mb12d035[m initialize routing
+[33m51fbe46[m start project
+[33md8ba144[m[33m ([m[1;31morigin/filed_based_routing[m[33m)[m done routing
+[33m1d30d58[m initial commit
+[33mc715171[m initial commit
