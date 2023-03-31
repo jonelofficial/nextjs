@@ -1,8 +1,13 @@
 import EventList from "@/components/events/event-list";
+import Head from "next/head";
 
 const HomePage = ({ items }) => {
   return (
     <div>
+      <Head>
+        <title>NextJs Events</title>
+        <meta name="description" content="testing meta tag on HomePage" />
+      </Head>
       <EventList items={items} />
     </div>
   );
